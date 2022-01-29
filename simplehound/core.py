@@ -20,7 +20,7 @@ ALLOWED_RECOGNITION_OPTIONS = ["licenseplate", "vehicle", "vehicle,licenseplate"
 
 DETECTIONS_PARAMS = (
     ("type", "all"),
-    ("faceOption", "gender,age"),
+    ("faceOption", "gender,age,emotion"),
 )
 
 
@@ -81,7 +81,11 @@ def get_faces(detections: Dict) -> List[Dict]:
             continue
         face = {}
         face["gender"] = obj["attributes"]["gender"]
+        face["genderConfidence"] = obj["attributes"]["genderConfidence"]
         face["age"] = obj["attributes"]["age"]
+        face["ageConfidence"] = obj["attributes"]["ageConfidence"]
+        face["emotion"] = obj["attributes"]["emotion"]
+        face["emotionConfidence"] = obj["attributes"]["emotionConfidence"]
         face["boundingBox"] = obj["boundingBox"]
         faces.append(face)
     return faces
