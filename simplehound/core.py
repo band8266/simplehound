@@ -80,13 +80,13 @@ def get_faces(detections: Dict) -> List[Dict]:
         if not obj["type"] == "face":
             continue
         face = {}
+        face["boundingBox"] = obj["boundingBox"]
         face["gender"] = obj["attributes"]["gender"]
         face["genderConfidence"] = obj["attributes"]["genderConfidence"]
         face["age"] = obj["attributes"]["age"]
         face["ageConfidence"] = obj["attributes"]["ageConfidence"]
         face["emotion"] = obj["attributes"]["emotion"]
         face["emotionConfidence"] = obj["attributes"]["emotionConfidence"]
-        face["boundingBox"] = obj["boundingBox"]
         faces.append(face)
     return faces
 
